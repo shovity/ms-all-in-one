@@ -1,0 +1,54 @@
+version: '3.7'
+
+services:
+
+  # kong database
+  postgres:
+    image: postgres
+    networks:
+      - default
+    environment:
+      POSTGRES_USER: kong
+      POSTGRES_DB: kong
+
+  # kong main service
+  kong:
+    image: kong:latest
+    networks:
+      - default
+    environment:
+      KONG_DATABASE: postgres
+      KONG_PG_HOST: postgres
+      KONG_CASSANDRA_CONTACT_POINTS: postgres
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001, 0.0.0.0:8444 ssl
+    ports:
+      - 8000:8000
+      - 8443:8443
+      - 8001:8001
+      - 8444:8444
+
+  # UI for kong
+  konga:
+    image: pantsel/konga
+    networks:
+      - default
+      - backend
+    environment:
+      TOKEN_SECRET: km1GUr4RkcQD7DewhJPNXrCuZwcKmqjb
+    #   DB_ADAPTER: postgres
+    #   DB_HOST: postgres
+    #   DB_USER: kong
+    #   DB_DATABASE: kong
+    depends_on:
+      - postgres
+    ports:
+      - 1337:1337
+
+networks:
+  default:
+  backend:
+  

@@ -1,0 +1,29 @@
+# master compose
+
+version: '3.7'
+
+services:
+
+  logger:
+    image: logger
+    build: .
+    environment:
+      NODE_ENV: production
+    depends_on:
+      - redis
+    networks:
+      - backend
+      - default
+
+  redis:
+    image: redis:alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    restart: always
+    networks:
+      - default
+    volumes:
+      - ./data/redis:/data
+
+networks:
+  backend:
+    name: backend

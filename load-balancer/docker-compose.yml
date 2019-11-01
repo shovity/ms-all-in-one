@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  load-balancer:
+    image: load-balancer
+    build: .
+    networks:
+      - backend
+    ports:
+      - 8080:80
+
+networks:
+  backend:
+    name: backend

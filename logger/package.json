@@ -1,0 +1,27 @@
+{
+  "name": "logger",
+  "version": "1.0.0",
+  "description": "Fast to store. Fast to retrieve",
+  "main": "app.js",
+  "repository": "https://github.com/shovity/logger.git",
+  "author": "shovity <shovity@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node app",
+    "dev": "nodemon app",
+
+    "up": "sh bin/dcom-start"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "redis": "^2.8.0",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}

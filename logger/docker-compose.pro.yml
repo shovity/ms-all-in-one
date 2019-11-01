@@ -1,0 +1,10 @@
+# production environment
+
+version: '3.7'
+
+services:
+  redis:
+    restart: always
+    
+  logger:
+    restart: always

@@ -1,0 +1,10 @@
+2019/10/29 07:21:00 [warn] 1#1: the "ssl" directive is deprecated, use the "listen ... ssl" directive instead in /etc/nginx/conf.d/master.conf:3
+2019/10/29 07:21:00 [emerg] 1#1: host not found in upstream "logger" in /etc/nginx/conf.d/master.conf:11
+2019/10/29 07:21:03 [warn] 1#1: the "ssl" directive is deprecated, use the "listen ... ssl" directive instead in /etc/nginx/conf.d/master.conf:3
+2019/10/29 07:21:03 [emerg] 1#1: host not found in upstream "logger" in /etc/nginx/conf.d/master.conf:11
+2019/10/29 07:21:05 [warn] 1#1: the "ssl" directive is deprecated, use the "listen ... ssl" directive instead in /etc/nginx/conf.d/master.conf:3
+2019/10/29 07:21:05 [emerg] 1#1: host not found in upstream "logger" in /etc/nginx/conf.d/master.conf:11
+2019/10/29 07:21:08 [warn] 1#1: the "ssl" directive is deprecated, use the "listen ... ssl" directive instead in /etc/nginx/conf.d/master.conf:3
+2019/10/29 07:21:08 [emerg] 1#1: host not found in upstream "logger" in /etc/nginx/conf.d/master.conf:11
+2019/10/29 07:21:10 [warn] 1#1: the "ssl" directive is deprecated, use the "listen ... ssl" directive instead in /etc/nginx/conf.d/master.conf:3
+2019/10/29 07:21:10 [emerg] 1#1: host not found in upstream "logger" in /etc/nginx/conf.d/master.conf:11

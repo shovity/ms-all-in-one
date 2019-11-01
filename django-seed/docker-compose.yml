@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+
+  django-seed:
+    build: .
+    command: gunicorn core.wsgi:application --bind 0.0.0.0:8000
+    depends_on:
+      - postgres
+    networks:
+      - backend
+      - default
+
+  postgres:
+    image: postgres
+    networks:
+      - default
+
+networks:
+  backend:
+    name: backend
