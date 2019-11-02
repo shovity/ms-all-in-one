@@ -1,0 +1,1 @@
+logger service store with redis database

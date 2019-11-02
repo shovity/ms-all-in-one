@@ -16,14 +16,14 @@ const server = http.createServer(app)
 // apply middlewares
 app.use(cors())
 app.use(bodyParser.json())
-app.use('/logger/api', router)
+app.use('/api', router)
 
-app.get('/logger', (req, res) => {
+app.get('/', (req, res) => {
     return res.json({ name: 'You know for log' })
 })
 
 app.use((req, res, next) => {
-    return res.json({ error: 404 })
+    return res.json({ error: 404, url: req.url })
 })
 
 // listen

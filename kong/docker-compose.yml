@@ -34,6 +34,7 @@ services:
     image: kong:latest
     networks:
       - default
+      - backend
     environment:
       KONG_DATABASE: postgres
       KONG_PG_HOST: kong-database
