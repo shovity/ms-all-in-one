@@ -2,14 +2,32 @@ version: '3.7'
 
 services:
 
-  # kong database
-  postgres:
-    image: postgres
+  # postgres database for kong state
+  kong-database:
+    image: postgres:9.6
     networks:
       - default
     environment:
       POSTGRES_USER: kong
       POSTGRES_DB: kong
+
+  # kong database migration
+  kong-migration:
+    image: kong:latest
+    command: "kong migrations bootstrap"
+    networks:
+      - default
+    environment:
+      KONG_PG_HOST: kong-database
+
+  # konga database prepare
+  konga-prepare:
+    image: pantsel/konga:next
+    command: "-c prepare -a postgres -u postgresql://kong@kong-database:5432/konga_db"
+    networks:
+      - default
+    depends_on:
+      - kong-database
 
   # kong main service
   kong:
@@ -18,12 +36,7 @@ services:
       - default
     environment:
       KONG_DATABASE: postgres
-      KONG_PG_HOST: postgres
-      KONG_CASSANDRA_CONTACT_POINTS: postgres
-      KONG_PROXY_ACCESS_LOG: /dev/stdout
-      KONG_ADMIN_ACCESS_LOG: /dev/stdout
-      KONG_PROXY_ERROR_LOG: /dev/stderr
-      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_PG_HOST: kong-database
       KONG_ADMIN_LISTEN: 0.0.0.0:8001, 0.0.0.0:8444 ssl
     ports:
       - 8000:8000
@@ -31,24 +44,22 @@ services:
       - 8001:8001
       - 8444:8444
 
-  # UI for kong
+  # kong UI manager
   konga:
-    image: pantsel/konga
+    image: pantsel/konga:next
     networks:
       - default
-      - backend
     environment:
       TOKEN_SECRET: km1GUr4RkcQD7DewhJPNXrCuZwcKmqjb
-    #   DB_ADAPTER: postgres
-    #   DB_HOST: postgres
-    #   DB_USER: kong
-    #   DB_DATABASE: kong
-    depends_on:
-      - postgres
+      DB_ADAPTER: postgres
+      DB_HOST: kong-database
+      DB_USER: kong
+      DB_DATABASE: konga_db
     ports:
       - 1337:1337
 
 networks:
   default:
   backend:
+    name: backend
   
