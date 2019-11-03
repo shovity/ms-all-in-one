@@ -1,0 +1,12 @@
+# development environment
+# enable volumes and hot reload
+
+version: '3.7'
+
+services:
+  websocket:
+    volumes:
+      - .:/app
+    environment:
+      NODE_ENV: development
+    command: yarn dev -L

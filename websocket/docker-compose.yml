@@ -1,0 +1,32 @@
+# master compose
+
+version: '3.7'
+
+services:
+
+  websocket:
+    image: websocket
+    build: .
+    environment:
+      NODE_ENV: production
+    ulimits:
+      nofile:
+        soft: 10240
+        hard: 10240
+    depends_on:
+      - redis
+    ports:
+      - 2404:2404
+    networks:
+      - backend
+
+  redis:
+    image: redis:alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - 6379:6379
+    networks:
+      - backend
+
+networks:
+  backend:

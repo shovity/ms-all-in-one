@@ -1,0 +1,12 @@
+config:
+  target: 'https://socket.jamja.vn/pro'
+  phases:
+    - duration: 360
+      arrivalRate: 5
+scenarios:
+  - engine: 'socketio'
+    flow:
+      - emit:
+          channel: 'login'
+          data: '{"id": "TEST"}'
+      - think: 3600

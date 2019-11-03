@@ -1,0 +1,12 @@
+# master compose
+
+version: '3.7'
+
+services:
+
+  websocket:
+    restart: always
+
+  redis:
+    restart: always
+    
