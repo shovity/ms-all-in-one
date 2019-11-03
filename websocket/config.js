@@ -1,5 +1,7 @@
 const config = {}
 
+config.port = 3000
+
 config.namespace = {
     dev: 'dev',
     pro: 'pro',

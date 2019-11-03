@@ -49,7 +49,10 @@ html(lang='en')
 
     script(src='https://socket.jamja.vn/socket.io/socket.io.js')
     script.
-      const socket = io('/#{nsp}')
+      const socket = io('/#{nsp}', {
+        path: '/websocket/socket.io'
+      })
+      
       socket.emit('login', { username: 'monitor', href: location.href, id: 'monitor' })
       socket.emit('join_room', 'user_monitoring')
       socket.on('clients_changed', sockets => {

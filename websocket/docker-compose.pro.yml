@@ -6,6 +6,8 @@ services:
 
   websocket:
     restart: always
+    environment:
+      NODE_ENV: production
 
   redis:
     restart: always

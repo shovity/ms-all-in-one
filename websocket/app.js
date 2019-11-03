@@ -9,9 +9,7 @@ const cors = require('cors')
 const io = require('./io')
 const logger = require('./engine/logger')
 const router = require('./router')
-
-// define constants
-const PORT = 2404
+const config = require('./config')
 
 // initial apps instance
 const app = express()
@@ -31,6 +29,6 @@ app.use(cookieParser())
 app.use(router)
 
 // listen
-server.listen(PORT, () => {
-    logger.debug('server realtime interface running at port ' + PORT)
+server.listen(config.port, () => {
+    logger.debug('server realtime interface running at port ' + config.port)
 })

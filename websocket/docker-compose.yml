@@ -7,26 +7,23 @@ services:
   websocket:
     image: websocket
     build: .
-    environment:
-      NODE_ENV: production
     ulimits:
       nofile:
         soft: 10240
         hard: 10240
     depends_on:
       - redis
-    ports:
-      - 2404:2404
     networks:
       - backend
+      - default
 
   redis:
     image: redis:alpine
     command: ["redis-server", "--appendonly", "yes"]
-    ports:
-      - 6379:6379
     networks:
-      - backend
+      - default
 
 networks:
   backend:
+    name: backend
+  default:

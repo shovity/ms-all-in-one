@@ -83,7 +83,7 @@ router.get('/:nsp', (req, res, next) => {
 
 // response 404
 router.use((req, res) => {
-    res.json({ error: 404 })
+    res.json({ error: 404, url: req.originalUrl })
 })
 
 module.exports = router
