@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  load-balancer:
+  gateway:
     volumes:
       - ./log:/var/log/nginx
     restart: always

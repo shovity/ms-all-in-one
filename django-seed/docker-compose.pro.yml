@@ -3,6 +3,3 @@ version: '3.7'
 services:
   django-seed:
     restart: always
-
-  postgres:
-    restart: always
