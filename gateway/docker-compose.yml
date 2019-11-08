@@ -7,7 +7,7 @@ services:
     networks:
       - backend
     ports:
-      - 8080:80
+      - 5555:80
 
 networks:
   backend:

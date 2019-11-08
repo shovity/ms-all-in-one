@@ -2,13 +2,13 @@
 
 # Usage:
 # ./bin/up pro
-# ./bin/up dev
+# ./bin/up loc
 
 env=$1
 
 case "$env" in
-  dev)
-    docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+  loc)
+    docker-compose -f docker-compose.yml -f docker-compose.loc.yml up
     ;;
   
   pro)
