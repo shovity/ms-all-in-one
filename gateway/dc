@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+env=$1
+
+shift
+
+case "$env" in
+  loc)
+    docker-compose -f docker-compose.yml -f docker-compose.loc.yml "$@"
+    ;;
+  
+  pro)
+    docker-compose -f docker-compose.yml -f docker-compose.pro.yml "$@"
+    ;;
+
+  *)
+    echo environment not found!
+esac

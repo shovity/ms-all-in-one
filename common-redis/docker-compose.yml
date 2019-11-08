@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+
+  common-redis:
+    image: redis:alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - ./data/redis:/data
+    networks:
+      - backend
+    ports:
+      - 6379:6379
+
+networks:
+  backend:
+    name: backend
