@@ -8,6 +8,19 @@ services:
     networks:
       - backend
       - default
+    depends_on:
+      - database
+
+  database:
+    image: mongo
+    volumes:
+      - mongodata:/data/db
+
+  # broker:
+  # worker:
+
+volumes:
+  mongodata:
 
 networks:
   backend:

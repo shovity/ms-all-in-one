@@ -1,0 +1,9 @@
+{
+  "name": "django-seed",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "sh bin/up loc",
+    "build": "docker-compose build"
+  }
+}
