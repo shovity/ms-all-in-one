@@ -12,7 +12,7 @@ case "$env" in
     ;;
   
   pro)
-    docker-compose -f docker-compose.yml -f docker-compose.pro.yml up -d
+    docker-compose -f docker-compose.yml -f docker-compose.pro.yml up -d --build
     ;;
 
   *)
