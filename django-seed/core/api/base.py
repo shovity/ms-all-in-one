@@ -98,9 +98,6 @@ class APIBase(View):
             status_code {init} -- http status code
             header {dict} -- response header
             cookie {dict} -- response cookie
-                - handler must is a pure function. It will call in other context
-                then don't forget import package needed and plesase, don't use closure
-                - payload should be a celery serializable.
             redirect {str} -- url to redirect
             paging {int} -- number of page
 
@@ -118,7 +115,7 @@ class APIBase(View):
         elif error is not None:
             msg = ''
 
-            if isinstance(error, (str, unicode)):
+            if isinstance(error, str):
                 msg = error
 
             response['error'] = {
