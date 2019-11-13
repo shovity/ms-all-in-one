@@ -1,13 +1,11 @@
 from django.contrib import admin
 from django.urls import path
 
-from core.api import APIBase
+from core.api import Router
 
-class T(APIBase):
+api = Router('django-seed/api')
 
-    def get(self):
-        return self.res(1)
+api.add('temp/resource')
 
-urlpatterns = [
-    path('django-seed/', T.as_view())
-]
+urlpatterns = []
+urlpatterns.append(api.url())

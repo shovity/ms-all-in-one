@@ -3,6 +3,7 @@ version: '3.7'
 services:
 
   django-seed:
+    image: django-seed
     build: .
     command: gunicorn main.wsgi:application --bind 0.0.0.0:8000
     networks:

@@ -144,7 +144,7 @@ class APIBase(View):
                 response['meta'] = {}
             # response['meta']['next'] = get_next_url(self, data, paging)
         
-        response = HttpResponse(json_from(response), status=status_code, content_type="application/json")
+        response = HttpResponse(json_from(response), status=status_code, content_type='application/json')
 
         if header:
             for k, v in header.items():
