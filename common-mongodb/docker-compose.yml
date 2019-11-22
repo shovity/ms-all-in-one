@@ -5,6 +5,9 @@ services:
   common-mongodb:
     image: mongo
     volumes:
-      - ./data/mongo:/data/db
+      - common-mongodata:/data/db
     ports:
       - 27017:27017
+
+volumes:
+  common-mongodata:
